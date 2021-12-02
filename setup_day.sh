@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ $# != 1 ]; then
-    echo "Usage: $(basename "$0") <day-number>" >&2
+    echo "Usage: $(basename "$0") <day-number, e.g 'one', 'two'>" >&2
     exit 1
 fi
 if [ ! -d .git ]; then
