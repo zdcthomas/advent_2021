@@ -9,6 +9,9 @@ if [ ! -d .git ]; then
     exit 1
 fi
 
-name="$(printf "aoc%02d" "$1")"
+name=$1
 cargo new --bin "$name"
-mkdir "$name/input"
+touch "$name/input.txt"
+touch "$name/README.md"
+echo "# $name Days of Advent" >> $name/README.md
+echo "![fun $name](../images/$name.png)" >> $name/README.md
