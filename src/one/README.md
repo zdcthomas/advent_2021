@@ -1,2 +1,2 @@
 # Day One
-![one](../images/one.png)
+![one](../../images/one.png)
