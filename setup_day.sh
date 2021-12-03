@@ -10,8 +10,11 @@ if [ ! -d .git ]; then
 fi
 
 name=$1
-cargo new --bin "$name"
-touch "$name/input.txt"
-touch "$name/README.md"
-echo "# $name Days of Advent" >> $name/README.md
-echo "![fun $name](../images/$name.png)" >> $name/README.md
+touch "./input/$name"
+mkdir "./src/$name"
+touch "./src/$name/mod.rs"
+touch "./src/$name/README.md"
+echo "# $name Days of Advent" >> ./src/$name/README.md
+echo "![fun $name](../images/$name.png)" >> ./src/$name/README.md
+
+echo "[day $name](./src/$name)" >> ./README.md

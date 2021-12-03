@@ -1,4 +1,6 @@
+use super::Day;
 use std::{fs::File, io::Read, path::PathBuf, str::FromStr};
+pub struct Two;
 
 enum Direction {
     Forward,
@@ -84,36 +86,30 @@ fn direction_and_amount(command: String) -> (Direction, i32) {
     (direction, amount)
 }
 
-fn main() {
-    println!("First: {}", first().final_product());
-    println!("Second: {}", second().final_product());
-}
+impl Day for Two {
+    type Input = Vec<String>;
 
-fn first() -> Position {
-    let mut position = Position::new();
-    position.nav_from_list(input_commands());
-    position
-}
+    type Return = i32;
 
-fn second() -> Position {
-    let mut position = Position::new();
-    position.nav_and_aim_from_list(input_commands());
-    position
-}
+    fn parse_file(file_string: String) -> Self::Input {
+        file_string
+            .trim()
+            .split('\n')
+            .map(|s| s.to_string())
+            .collect()
+    }
 
-fn input_commands() -> Vec<String> {
-    let path = PathBuf::from("./input.txt");
-    let mut file_contents = String::new();
-    File::open(path)
-        .unwrap()
-        .read_to_string(&mut file_contents)
-        .unwrap();
+    fn first(lines: Self::Input) -> Self::Return {
+        let mut position = Position::new();
+        position.nav_from_list(lines);
+        position.final_product()
+    }
 
-    file_contents
-        .trim()
-        .split('\n')
-        .map(|s| s.to_string())
-        .collect()
+    fn second(lines: Self::Input) -> Self::Return {
+        let mut position = Position::new();
+        position.nav_and_aim_from_list(lines);
+        position.final_product()
+    }
 }
 
 #[cfg(test)]
