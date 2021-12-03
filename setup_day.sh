@@ -16,5 +16,5 @@ touch "./src/$name/mod.rs"
 touch "./src/$name/README.md"
 echo "# $name Days of Advent" >> ./src/$name/README.md
 echo "![fun $name](../../images/$name.png)" >> ./src/$name/README.md
-
-echo "[day $name](./src/$name)\n" >> ./README.md
+echo "\n[day $name](./src/$name)" >> ./README.md
+echo "mod $name;" >> ./src/main.rs
