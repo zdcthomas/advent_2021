@@ -8,3 +8,5 @@
 [day one](./src/one)
 
 [day two](./src/two)
+
+[day three](./src/three)

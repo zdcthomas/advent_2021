@@ -18,3 +18,4 @@ echo "# $name Days of Advent" >> ./src/$name/README.md
 echo "![fun $name](../../images/$name.png)" >> ./src/$name/README.md
 echo "\n[day $name](./src/$name)" >> ./README.md
 echo "mod $name;" >> ./src/main.rs
+echo "use super::Day;" >> ./src/$name/mod.rs

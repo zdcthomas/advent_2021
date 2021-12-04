@@ -19,4 +19,5 @@ fn main() {
 // AUTO GEN
 
 mod one;
+mod three;
 mod two;
