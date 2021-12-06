@@ -10,3 +10,5 @@
 [day two](./src/two)
 
 [day three](./src/three)
+
+[day four](./src/four)

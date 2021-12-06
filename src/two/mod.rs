@@ -65,7 +65,6 @@ impl Position {
 
     fn nav_and_aim_from_list(&mut self, command_list: Vec<String>) {
         for command in command_list {
-            dbg!(&self);
             self.nav_and_aim(command)
         }
     }
