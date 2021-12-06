@@ -92,15 +92,13 @@ fn co2_scrubber_rating(bins: &Vec<Bin>, least_common_bin: &Bin, index: usize) ->
         return bins.first().unwrap().clone();
     }
 
-    let filtered = filter_bin_by_index_match(bins, *least_common_bin.get(index).unwrap(), index);
-
-    co2_scrubber_rating(&filtered, &most_common(&bins).flip_bits(), index + 1)
-}
-fn filter_bin_by_index_match(bins: &Vec<Bin>, val: u8, index: usize) -> Vec<Bin> {
-    bins.iter()
-        .filter(|bin| bin.get(index).unwrap() == &val)
+    let bins = bins
+        .iter()
+        .filter(|bin| bin.get(index) == least_common_bin.get(index))
         .map(|bin| bin.clone())
-        .collect::<Vec<Bin>>()
+        .collect::<Vec<Bin>>();
+
+    co2_scrubber_rating(&bins, &most_common(&bins).flip_bits(), index + 1)
 }
 
 fn oxygen_generator_rating(bins: &Vec<Bin>, most_common_bin: &Bin, index: usize) -> Bin {
@@ -108,8 +106,13 @@ fn oxygen_generator_rating(bins: &Vec<Bin>, most_common_bin: &Bin, index: usize)
         return bins.first().unwrap().clone();
     }
 
-    let filtered = filter_bin_by_index_match(bins, *most_common_bin.get(index).unwrap(), index);
-    oxygen_generator_rating(&filtered, &most_common(&bins), index + 1)
+    let bins = bins
+        .iter()
+        .filter(|bin| bin.get(index) == most_common_bin.get(index))
+        .map(|bin| bin.clone())
+        .collect::<Vec<Bin>>();
+
+    oxygen_generator_rating(&bins, &most_common(&bins), index + 1)
 }
 
 fn add(first: Vec<i32>, second: Vec<i32>) -> Vec<i32> {
